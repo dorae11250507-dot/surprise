@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Love 💖</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  text-align:center;
+  background:black;
+  color:white;
+}
+
+/* hide all sections */
+.section { display:none; }
+
+/* active section */
+.active { display:block; }
+
+button {
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:pink;
+  cursor:pointer;
+}
+
+input {
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
+
+/* center box */
+.box {
+  margin-top:100px;
+}
+
+/* chat style */
+.chat {
+  background:#222;
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+}
+
+/* typing text */
+#typing {
+  font-size:20px;
+  color:pink;
+}
+</style>
+
+</head>
+<body>
+
+<!-- 🔐 LOGIN -->
+<div id="page1" class="section active box">
+  <h2>Enter My Heart 💖</h2>
+  <input type="password" id="pass" placeholder="Password">
+  <br><br>
+  <button onclick="login()">Unlock My Love 💕</button>
+</div>
+
+<!-- ❤️ LOADING -->
+<div id="page2" class="section box">
+  <h2>Loading Love... ❤️</h2>
+</div>
+
+<!-- 💌 MISS YOU -->
+<div id="page3" class="section box">
+  <h2>Miss You 😔</h2>
+  <p>I miss you every second 💔</p>
+  <button onclick="next(4)">Next 💕</button>
+</div>
+
+<!-- 📸 PHOTOS -->
+<div id="page4" class="section box">
+  <h2>Our Photos 📸</h2>
+  <img id="slide" src="photo1.jpg" width="250">
+  <br><br>
+  <button onclick="next(5)">Next 💖</button>
+</div>
+
+<!-- 🎥 VIDEO -->
+<div id="page5" class="section box">
+  <h2>Memories 🎥</h2>
+  <video width="250" controls>
+    <source src="video.mp4">
+  </video>
+  <br><br>
+  <button onclick="next(6)">Next 💕</button>
+</div>
+
+<!-- 💬 CHAT -->
+<div id="page6" class="section box">
+  <h2>Chat 💬</h2>
+  <div class="chat">Hi ❤️</div>
+  <div class="chat">Miss you 😔</div>
+  <div class="chat">Come back 😢</div>
+  <button onclick="next(7)">Next 💖</button>
+</div>
+
+<!-- 💖 TYPING -->
+<div id="page7" class="section box">
+  <h2>My Words 💌</h2>
+  <p id="typing"></p>
+  <button onclick="startTyping()">Love Loop 💕</button>
+  <br><br>
+  <button onclick="next(8)">Final 💥</button>
+</div>
+
+<!-- 💥 FINAL -->
+<div id="page8" class="section box">
+  <h1>I LOVE YOU 💖💖💖</h1>
+  <h2>Forever 😘</h2>
+</div>
+
+<script>
+
+/* LOGIN */
+function login() {
+  let p = document.getElementById("pass").value;
+
+  if(p === "1234") {
+    show(2);
+
+    setTimeout(() => {
+      show(3);
+    }, 2000);
+
+  } else {
+    alert("Wrong Password 😜");
+  }
+}
+
+/* CHANGE PAGE */
+function show(n) {
+  let pages = document.querySelectorAll(".section");
+  pages.forEach(p => p.classList.remove("active"));
+  document.getElementById("page"+n).classList.add("active");
+}
+
+function next(n) {
+  show(n);
+}
+
+/* PHOTO SLIDER */
+let images = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+let i = 0;
+
+setInterval(() => {
+  let img = document.getElementById("slide");
+  if(img){
+    img.src = images[i];
+    i = (i+1) % images.length;
+  }
+},2000);
+
+/* TYPING EFFECT */
+function startTyping(){
+  let text = "Unnai romba miss panren ❤️ Please come back...";
+  let i=0;
+
+  document.getElementById("typing").innerHTML="";
+
+  function type(){
+    if(i < text.length){
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type,50);
+    }
+  }
+
+  type();
+}
+
+</script>
+
+</body>
+</html>
