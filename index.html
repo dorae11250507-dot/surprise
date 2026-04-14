@@ -1,183 +1,268 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>My Love 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Priya 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-body {
-  margin:0;
-  font-family: Arial;
-  text-align:center;
-  background:black;
-  color:white;
-}
+    :root {
+      --pink: #d4548a;
+      --dark-pink: #b5294e;
+      --light-pink: #fce4ec;
+      --soft: #ffd6e8;
+      --text: #6b3050;
+      --card: #ffffff;
+    }
 
-/* hide all sections */
-.section { display:none; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(160deg, #fff0f5 0%, #ffe4ef 50%, #ffd6e8 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text);
+    }
 
-/* active section */
-.active { display:block; }
+    #hearts-bg {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .fh {
+      position: absolute;
+      bottom: -40px;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { opacity: 0;   transform: translateY(0) scale(0.6) rotate(-10deg); }
+      15%  { opacity: 0.7; }
+      85%  { opacity: 0.3; }
+      100% { opacity: 0;   transform: translateY(-110vh) scale(1.1) rotate(15deg); }
+    }
 
-button {
-  padding:10px 20px;
-  border:none;
-  border-radius:20px;
-  background:pink;
-  cursor:pointer;
-}
+    .page { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 0 60px; }
 
-input {
-  padding:10px;
-  border-radius:10px;
-  border:none;
-}
+    .hero { text-align: center; padding: 50px 24px 24px; animation: fadeDown 1s ease both; }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-label { font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: var(--pink); margin-bottom: 10px; }
+    .hero-name  { font-family: 'Dancing Script', cursive; font-size: clamp(52px, 14vw, 72px); color: var(--dark-pink); line-height: 1; text-shadow: 0 2px 20px rgba(181,41,78,0.18); }
+    .hero-sub   { font-size: 14px; color: var(--pink); margin-top: 10px; font-weight: 500; }
 
-/* center box */
-.box {
-  margin-top:100px;
-}
+    .photos { display: flex; justify-content: center; gap: 14px; padding: 10px 20px 20px; flex-wrap: wrap; animation: fadeUp 1s 0.3s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .photo-card {
+      background: white; border-radius: 18px; padding: 8px 8px 12px;
+      box-shadow: 0 6px 24px rgba(212,84,138,0.14);
+      transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+      cursor: pointer; text-align: center;
+    }
+    .photo-card:hover               { transform: rotate(-3deg) scale(1.06); }
+    .photo-card:nth-child(2):hover  { transform: rotate(3deg)  scale(1.06); }
+    .photo-card:nth-child(3):hover  { transform: rotate(-2deg) scale(1.06); }
 
-/* chat style */
-.chat {
-  background:#222;
-  padding:10px;
-  margin:10px;
-  border-radius:10px;
-}
+    .photo-frame {
+      width: 120px; height: 120px; border-radius: 12px; overflow: hidden;
+      background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; color: var(--pink); font-size: 11px; font-weight: 600; gap: 6px;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-frame span { font-size: 30px; }
+    .photo-caption { font-family: 'Dancing Script', cursive; font-size: 15px; color: var(--dark-pink); margin-top: 8px; }
 
-/* typing text */
-#typing {
-  font-size:20px;
-  color:pink;
-}
-</style>
+    .countdown {
+      margin: 0 20px 24px; background: white; border-radius: 22px;
+      padding: 22px 20px; box-shadow: 0 6px 24px rgba(212,84,138,0.12);
+      text-align: center; animation: fadeUp 1s 0.5s ease both;
+    }
+    .cd-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--pink); margin-bottom: 16px; }
+    .cd-grid  { display: flex; justify-content: center; align-items: center; gap: 8px; }
+    .cd-unit  { display: flex; flex-direction: column; align-items: center; }
+    .cd-num   {
+      font-size: 32px; font-weight: 600; color: var(--dark-pink);
+      background: linear-gradient(135deg, #fce4ec, #ffd6e8);
+      width: 68px; height: 68px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.15s;
+    }
+    .cd-num.tick { transform: scale(1.08); }
+    .cd-lbl  { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--pink); margin-top: 5px; }
+    .cd-sep  { font-size: 28px; font-weight: 700; color: var(--pink); padding-bottom: 18px; }
 
+    .music-bar {
+      margin: 0 20px 24px; background: white; border-radius: 18px;
+      padding: 16px 20px; box-shadow: 0 6px 24px rgba(212,84,138,0.12);
+      display: flex; align-items: center; gap: 16px;
+      animation: fadeUp 1s 0.6s ease both;
+    }
+    .music-btn {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, #f48aaa, var(--pink));
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: white; flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .music-btn:hover { transform: scale(1.1); }
+    .music-name   { font-size: 14px; font-weight: 600; color: var(--dark-pink); }
+    .music-artist { font-size: 12px; color: var(--pink); margin-top: 2px; }
+    .waves { display: flex; gap: 3px; align-items: flex-end; height: 24px; }
+    .w { width: 4px; border-radius: 2px; background: #f48aaa; animation: wv 1.2s ease-in-out infinite; }
+    .w:nth-child(1){height:8px;  animation-delay:0s;}
+    .w:nth-child(2){height:18px; animation-delay:.15s;}
+    .w:nth-child(3){height:11px; animation-delay:.3s;}
+    .w:nth-child(4){height:22px; animation-delay:.08s;}
+    .w:nth-child(5){height:14px; animation-delay:.22s;}
+    @keyframes wv {
+      0%,100%{ transform:scaleY(1); }
+      50%    { transform:scaleY(0.35); }
+    }
+
+    .messages { padding: 0 20px; animation: fadeUp 1s 0.7s ease both; }
+    .msg-heading { font-family: 'Dancing Script', cursive; font-size: 28px; color: var(--dark-pink); text-align: center; margin-bottom: 16px; }
+    .msg-card { background: white; border-radius: 16px; padding: 18px 20px; margin-bottom: 12px; box-shadow: 0 4px 16px rgba(212,84,138,0.1); border-left: 4px solid #f48aaa; }
+    .msg-from { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--pink); font-weight: 600; margin-bottom: 6px; }
+    .msg-text { font-size: 14px; line-height: 1.7; color: var(--text); }
+
+    .footer { text-align: center; padding: 30px 20px 10px; font-family: 'Dancing Script', cursive; font-size: 22px; color: var(--pink); animation: fadeUp 1s 0.9s ease both; }
+  </style>
 </head>
 <body>
 
-<!-- 🔐 LOGIN -->
-<div id="page1" class="section active box">
-  <h2>Enter My Heart 💖</h2>
-  <input type="password" id="pass" placeholder="Password">
-  <br><br>
-  <button onclick="login()">Unlock My Love 💕</button>
-</div>
+  <div id="hearts-bg"></div>
 
-<!-- ❤️ LOADING -->
-<div id="page2" class="section box">
-  <h2>Loading Love... ❤️</h2>
-</div>
+  <div class="page">
 
-<!-- 💌 MISS YOU -->
-<div id="page3" class="section box">
-  <h2>Miss You 😔</h2>
-  <p>I miss you every second 💔</p>
-  <button onclick="next(4)">Next 💕</button>
-</div>
+    <!-- ✏️ CHANGE: Friend peyar -->
+    <div class="hero">
+      <div class="hero-label">✦ Happy Birthday ✦</div>
+      <div class="hero-name">Priya 💕</div>
+      <div class="hero-sub">Today is all about you, my dearest friend</div>
+    </div>
 
-<!-- 📸 PHOTOS -->
-<div id="page4" class="section box">
-  <h2>Our Photos 📸</h2>
-  <img id="slide" src="photo1.jpg" width="250">
-  <br><br>
-  <button onclick="next(5)">Next 💖</button>
-</div>
+    <!-- ✏️ CHANGE: Photos — photo1.jpg, photo2.jpg, photo3.jpg same folder-la podu -->
+    <div class="photos">
+      <div class="photo-card">
+        <div class="photo-frame">
+          <span>📷</span>Add photo 1
+          <!-- Replace span with: <img src="photo1.jpg" /> -->
+        </div>
+        <div class="photo-caption">Best memories</div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-frame" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);">
+          <span>🌸</span>Add photo 2
+        </div>
+        <div class="photo-caption">Always smiling</div>
+      </div>
+      <div class="photo-card">
+        <div class="photo-frame" style="background:linear-gradient(135deg,#fce4ec,#f8bbd9);">
+          <span>🎀</span>Add photo 3
+        </div>
+        <div class="photo-caption">Forever friends</div>
+      </div>
+    </div>
 
-<!-- 🎥 VIDEO -->
-<div id="page5" class="section box">
-  <h2>Memories 🎥</h2>
-  <video width="250" controls>
-    <source src="video.mp4">
-  </video>
-  <br><br>
-  <button onclick="next(6)">Next 💕</button>
-</div>
+    <!-- Countdown -->
+    <div class="countdown">
+      <div class="cd-title">⏳ Birthday countdown</div>
+      <div class="cd-grid">
+        <div class="cd-unit"><div class="cd-num" id="cd-d">00</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-h">00</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-m">00</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><div class="cd-num" id="cd-s">00</div><div class="cd-lbl">Secs</div></div>
+      </div>
+    </div>
 
-<!-- 💬 CHAT -->
-<div id="page6" class="section box">
-  <h2>Chat 💬</h2>
-  <div class="chat">Hi ❤️</div>
-  <div class="chat">Miss you 😔</div>
-  <div class="chat">Come back 😢</div>
-  <button onclick="next(7)">Next 💖</button>
-</div>
+    <!-- ✏️ CHANGE: Song name -->
+    <div class="music-bar">
+      <button class="music-btn" id="play-btn" onclick="toggleMusic()">▶</button>
+      <div class="music-info">
+        <div class="music-name">Ennodu Nee Irundhaal</div>
+        <div class="music-artist">Unga favourite song 🎵</div>
+      </div>
+      <div class="waves">
+        <div class="w"></div><div class="w"></div><div class="w"></div>
+        <div class="w"></div><div class="w"></div>
+      </div>
+    </div>
+    <!-- ✏️ Song add pannanum: src="song.mp3" — same folder-la mp3 podu -->
+    <audio id="bgMusic" src="" loop></audio>
 
-<!-- 💖 TYPING -->
-<div id="page7" class="section box">
-  <h2>My Words 💌</h2>
-  <p id="typing"></p>
-  <button onclick="startTyping()">Love Loop 💕</button>
-  <br><br>
-  <button onclick="next(8)">Final 💥</button>
-</div>
+    <!-- ✏️ CHANGE: Messages -->
+    <div class="messages">
+      <div class="msg-heading">💌 Messages with love</div>
+      <div class="msg-card">
+        <div class="msg-from">From: Your best friend</div>
+        <div class="msg-text">You are the most precious person in my life. Every moment with you is a memory I treasure forever. Wishing you all the happiness in the world! 🌹</div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-from">From: The whole gang 🎉</div>
+        <div class="msg-text">Happy birthday to the one who makes every room brighter! We love you to the moon and back. 💕</div>
+      </div>
+    </div>
 
-<!-- 💥 FINAL -->
-<div id="page8" class="section box">
-  <h1>I LOVE YOU 💖💖💖</h1>
-  <h2>Forever 😘</h2>
-</div>
+    <div class="footer">Made with 💕 just for you</div>
 
-<script>
+  </div>
 
-/* LOGIN */
-function login() {
-  let p = document.getElementById("pass").value;
-
-  if(p === "1234") {
-    show(2);
-
-    setTimeout(() => {
-      show(3);
-    }, 2000);
-
-  } else {
-    alert("Wrong Password 😜");
-  }
-}
-
-/* CHANGE PAGE */
-function show(n) {
-  let pages = document.querySelectorAll(".section");
-  pages.forEach(p => p.classList.remove("active"));
-  document.getElementById("page"+n).classList.add("active");
-}
-
-function next(n) {
-  show(n);
-}
-
-/* PHOTO SLIDER */
-let images = ["photo1.jpg","photo2.jpg","photo3.jpg"];
-let i = 0;
-
-setInterval(() => {
-  let img = document.getElementById("slide");
-  if(img){
-    img.src = images[i];
-    i = (i+1) % images.length;
-  }
-},2000);
-
-/* TYPING EFFECT */
-function startTyping(){
-  let text = "Unnai romba miss panren ❤️ Please come back...";
-  let i=0;
-
-  document.getElementById("typing").innerHTML="";
-
-  function type(){
-    if(i < text.length){
-      document.getElementById("typing").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type,50);
+  <script>
+    // Floating hearts
+    const emojis = ['💕','💗','💖','🌸','✨','💝','🎀','🌹'];
+    const bg = document.getElementById('hearts-bg');
+    function spawnHeart() {
+      const el = document.createElement('div');
+      el.className = 'fh';
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.cssText = `left:${Math.random()*100}%;font-size:${12+Math.random()*18}px;animation-duration:${5+Math.random()*5}s;animation-delay:${Math.random()*2}s;`;
+      bg.appendChild(el);
+      setTimeout(() => el.remove(), 12000);
     }
-  }
+    for(let i=0;i<6;i++) setTimeout(spawnHeart, i*400);
+    setInterval(spawnHeart, 900);
 
-  type();
-}
+    // ✏️ CHANGE: Birthday date — (YEAR, MONTH-1, DAY)
+    // Example: May 15 2025 = new Date(2025, 4, 15)
+    const BIRTHDAY = new Date(2025, 11, 25);
 
-</script>
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function tick() {
+      let diff = BIRTHDAY - new Date();
+      if(diff <= 0) { ['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00'); return; }
+      const d = Math.floor(diff/86400000); diff -= d*86400000;
+      const h = Math.floor(diff/3600000);  diff -= h*3600000;
+      const m = Math.floor(diff/60000);    diff -= m*60000;
+      const s = Math.floor(diff/1000);
+      [['cd-d',d],['cd-h',h],['cd-m',m],['cd-s',s]].forEach(([id,v])=>{
+        const el = document.getElementById(id);
+        const val = pad(v);
+        if(el.textContent !== val){ el.textContent=val; el.classList.add('tick'); setTimeout(()=>el.classList.remove('tick'),150); }
+      });
+    }
+    tick(); setInterval(tick,1000);
+
+    // Music
+    const audio = document.getElementById('bgMusic');
+    const btn = document.getElementById('play-btn');
+    let playing = false;
+    function toggleMusic() {
+      if(!audio.src || audio.src===window.location.href){ alert('Song add pannanum!\nsrc="song.mp3" update pannu, same folder-la mp3 podu.'); return; }
+      if(playing){ audio.pause(); btn.textContent='▶'; } else { audio.play(); btn.textContent='⏸'; }
+      playing=!playing;
+    }
+  </script>
 
 </body>
 </html>
